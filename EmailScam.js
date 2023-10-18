@@ -1,4 +1,5 @@
 import * as mo from 'movy';
+import {cameraMoveTo} from "movy";
 
 const bubble = mo.addGroup();
 bubble.addCircle({
@@ -144,9 +145,69 @@ t += 0.3;
 
 middle2.moveTo({sx: 4.75, t: t})
 right2.moveTo({position: [4.5, 0], t: t})
-const text2 = bubble2.addText('lakjdsbgl.xyz/sfjka?a=true&&redir=xfcz', {
+const text2 = bubble2.addText('google.xyz/sfjka?a=true&&redir=xfcz', {
     color: 'blue',
     position: [-2.455, 0],
     fontSize: 0.3,
     anchor:'left'
 }).fadeIn({duration: 0.1, t: t + 0.1})
+
+mo.cameraMoveTo({scale:0.3,t:t})
+const highlight = mo.addRect({
+    position:[-1.0,0],
+    color:'red'
+}).wipeIn({t:t+0.7})
+highlight.fadeOut({t:t+1.3})
+mo.cameraMoveTo({scale:1,t:t+1})
+
+t+=1.3
+
+const arrow = mo.addArrow([0,0],[-1,1],{
+    scale:0.4,
+    lineWidth:0.07
+}).fadeIn({t:t})
+
+
+arrow.moveTo({
+    position:[1,-1]
+})
+t+=1
+bubble2.changeColor('#cecece',{t:t})
+bubble2.changeColor('#26252a',{t:t+0.5})
+text2.changeColor('purple',{t:t+0.2})
+text2.changeColor('purple',{t:t+0.5})
+bubble.fadeOut({t:t+0.7})
+bubble1.fadeOut({t:t+0.7})
+bubble2.fadeOut({t:t+0.7})
+
+t+=0.9
+
+const sign = mo.addGroup()
+sign.addRectOutline({
+    width:10,
+    height:2,
+    opacity:0.2,
+    lineWidth:0.1,
+    position:[0,0]
+}).grow({t:t})
+
+
+const google = sign.addImage('img/google.png',{
+    position:[-4,0]
+}).grow({t:t})
+
+const sign_in = sign.addText('Sign in with Google',{
+    color:'white',
+    fontSize:0.4
+}).grow({t:t})
+
+sign.scaleTo(0.8,{duration:0.1})
+sign.scaleTo(1,{duration:0.1})
+
+mo.addImage('img/skull.svg',{
+    scale:8,
+    color:'red',
+    ccw:false
+}).grow({t:t+0.5})
+
+mo.addGlitch({t:t+1})
